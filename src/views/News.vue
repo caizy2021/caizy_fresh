@@ -63,6 +63,8 @@ export default {
     // 获取页面信息数据的方法
     async getNewsData(newPageNum) {
       // 向后端发送请求
+      // 如果当前页和要请求页是同一页数据，那么就不发送请求
+      if (this.newsList && newPageNum == this.pageNum) return;
       const { data: res } = await this.axios.get(
         `news_select.php?pageNum=${newPageNum}`
       );
