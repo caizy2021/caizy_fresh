@@ -28,7 +28,7 @@ Vue.config.productionTip = false
 // 注册filter过滤器
 Vue.filter('dateFormat', function(originVal){
   // 接收时间戳
-  const dt = new Date(originVal-0)
+  const dt = new Date(originVal - 0)
 
   // 计算年
   const year = dt.getFullYear()

@@ -12,8 +12,8 @@
       <div class="news">
         <ul>
           <li v-for="item in newsList" :key="item.nid">
-            <span>{{ item.pubTime | dateFormat }}</span
-            ><a href="">{{ item.title }}</a>
+            <span>{{ item.pubTime | dateFormat }}</span>
+            <router-link :to="`/news_details/${item.nid}`">{{ item.title }}</router-link>
           </li>
         </ul>
       </div>
@@ -55,12 +55,13 @@ export default {
   // 生命周期：挂载时
   mounted() {
     // 周期中调用函数
+    // 获取公司动态数据
     this.getNewsData(1);
   },
 
   // 页面方法
   methods: {
-    // 获取页面信息数据的方法
+    // 获取公司动态数据的方法
     async getNewsData(newPageNum) {
       // 向后端发送请求
       // 如果当前页和要请求页是同一页数据，那么就不发送请求

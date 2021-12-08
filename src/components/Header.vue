@@ -34,7 +34,15 @@
               >
             </li>
             <li><router-link to="/about">关于净美仕</router-link></li>
-            <li><router-link to="/news">公司动态</router-link></li>
+            <li>
+              <router-link
+                to="/news"
+                :class="{
+                  'router-link-exact-active': $route.name == 'NewsDetails',
+                }"
+                >公司动态</router-link
+              >
+            </li>
             <li class="nav_pd">
               <a href="product.html">产品中心<span class="icon_pd"></span></a>
               <div class="pd_dropdown">
