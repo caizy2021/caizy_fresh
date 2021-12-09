@@ -44,10 +44,16 @@
               >
             </li>
             <li class="nav_pd">
-              <a href="product.html">产品中心<span class="icon_pd"></span></a>
+              <router-link
+                to="/product/1"
+                :class="{
+                  'router-link-exact-active': $route.name == 'Product',
+                }"
+                >产品中心<span class="icon_pd"></span
+              ></router-link>
               <div class="pd_dropdown">
-                <a href="product.html?type=1">净美仕净化器</a>
-                <a href="product.html?type=2">净美仕滤网</a>
+                <router-link to="/product/1">净美仕净化器</router-link>
+                <router-link to="/product/2">净美仕滤网</router-link>
               </div>
             </li>
             <li><router-link to="/contact">联系我们</router-link></li>

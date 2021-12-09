@@ -21,18 +21,23 @@ const routes = [
   {
     path: '/contact',
     name: 'Contact',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Contact.vue')
+    component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue')
   },
   {
     path: '/news',
     name: 'News',
-    component: () => import(/* webpackChunkName: "about" */ '../views/News.vue')
+    component: () => import(/* webpackChunkName: "news" */ '../views/News.vue')
   },
   {
     path: '/news_details/:nid',
     name: 'NewsDetails',
-    component: () => import(/* webpackChunkName: "about" */ '../views/NewsDetails.vue')
-  }
+    component: () => import(/* webpackChunkName: "news_details" */ '../views/NewsDetails.vue')
+  },
+  {
+    path: '/product/:type',
+    name: 'Product',
+    component: () => import(/* webpackChunkName: "product" */ '../views/Product.vue')
+  },
 ]
 
 const router = new VueRouter({
