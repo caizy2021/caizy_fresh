@@ -20,25 +20,26 @@
       <!-- 产品列表-->
       <ul class="product_list clearfloat">
         <li v-for="(item, index) in productList" :key="index">
-          <a href=""
-            ><img
+          <router-link :to="`/product_details/${item.pid}`">
+            <img
               :src="`http://www.codeboy.com:9999/mfresh/${item.pic}`"
               alt=""
-          /></a>
+            />
+          </router-link>
           <div class="pdlist_text clearfloat">
             <h3>
               <p>{{ item.model }}</p>
               <span>{{ item.title2 }}</span>
             </h3>
-            <a href="">查看详情</a>
+            <router-link :to="`/product_details/${item.pid}`"
+              >查看详情</router-link
+            >
           </div>
         </li>
       </ul>
       <!-- 分页导航-->
       <div class="pages">
-        <a @click="getProductList(pageNum - 1)" v-if="pageNum > 1"
-          >上一页</a
-        >
+        <a @click="getProductList(pageNum - 1)" v-if="pageNum > 1">上一页</a>
         <a class="default" v-else>上一页</a>
         <a
           @click="getProductList(item)"

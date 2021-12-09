@@ -47,7 +47,8 @@
               <router-link
                 to="/product/1"
                 :class="{
-                  'router-link-exact-active': $route.name == 'Product',
+                  'router-link-exact-active':
+                    $route.name == 'Product' || $route.name == 'ProductDetails',
                 }"
                 >产品中心<span class="icon_pd"></span
               ></router-link>

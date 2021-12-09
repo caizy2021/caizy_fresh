@@ -38,6 +38,11 @@ const routes = [
     name: 'Product',
     component: () => import(/* webpackChunkName: "product" */ '../views/Product.vue')
   },
+  {
+    path: '/product_details/:pid',
+    name: 'ProductDetails',
+    component: () => import(/* webpackChunkName: "product_details" */ '../views/ProductDetails.vue')
+  },
 ]
 
 const router = new VueRouter({
