@@ -32,7 +32,9 @@
             价格：<span>¥</span
             ><strong id="price">{{ productDetailsList.price }}</strong>
           </p>
-          <a href="" id="addCart"><span class="icon_cart"></span>加入购物车</a>
+          <a @click="addToCart" id="addCart"
+            ><span class="icon_cart"></span>加入购物车</a
+          >
         </div>
       </div>
       <div class="details_box">
@@ -79,6 +81,29 @@ export default {
 
       console.log(res);
       this.productDetailsList = res;
+    },
+
+    // 添加购物车
+    async addToCart() {
+      // 判断：登录状态=>添加购物车；非登录状态=>跳转到登录页面
+      if(this.$store.state.uid){
+        // 添加商品到购物车
+        const uid = this.$store.state.uid;
+        const pid = this.$route.params.pid;
+        const url = `cart_detail_add.php?uid=${uid}&pid=${pid}`;
+        // 向后端发送请求
+        const {data:res} = await this.axios.get(url)
+        console.log(res);
+        // 判断请求是否成功
+        if(res.code==1){
+          alert('添加商品到购物车成功！')
+        }else{
+          alert('添加商品到购物车失败！')
+        }
+      }else{
+        // 编程式跳转：使用代码完成路由的跳转
+        this.$router.push("/login");
+      }
     },
   },
 };

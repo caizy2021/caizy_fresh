@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="header_box">
     <!-- header.html -->
     <header class="header container">
       <h1 class="logo"><router-link to="/" class="link"></router-link></h1>
@@ -11,11 +11,19 @@
           <li><a href="#">English</a></li>
           <li><a href="#" class="weixin"></a></li>
           <li><a href="#" class="weibo"></a></li>
-          <!--<li><a href="login.html" class="h_login">登录</a></li>-->
-          <!--<li><em>|</em></li>-->
-          <!--<li><a href="register.html" class="h_register">注册</a></li>-->
-          <!--<li class="top_user"><a href="">admin</a></li>-->
-          <!--<li class="top_quit"><a href="">退出</a></li>-->
+          <li v-if="!$store.state.uid">
+            <router-link to="/login" class="h_login">登录</router-link>
+          </li>
+          <li v-if="!$store.state.uid"><em>|</em></li>
+          <li v-if="!$store.state.uid">
+            <a href="register.html" class="h_register">注册</a>
+          </li>
+          <li v-if="$store.state.uid" class="top_user">
+            <a href="">{{ $store.state.uname }}</a>
+          </li>
+          <li v-if="$store.state.uid" class="top_quit">
+            <a @click="$store.commit('logout')">退出</a>
+          </li>
         </ul>
         <div class="search clearfloat">
           <button type="button"></button>
@@ -60,7 +68,7 @@
             <li><router-link to="/contact">联系我们</router-link></li>
           </ul>
         </div>
-        <div class="s_cart">
+        <div class="s_cart" v-if="$store.state.uid">
           <a href="cart.html">
             <span class="icon_cart"></span>购物车(<strong id="cart_sum"
               >0</strong
