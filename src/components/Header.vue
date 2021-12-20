@@ -69,11 +69,11 @@
           </ul>
         </div>
         <div class="s_cart" v-if="$store.state.uid">
-          <a href="cart.html">
+          <router-link to="/cart">
             <span class="icon_cart"></span>购物车(<strong id="cart_sum"
               >0</strong
             >)<span class="icon_sj"></span>
-          </a>
+          </router-link>
           <div class="cart_dropdown">
             <!--<h3>您的购物车为空~</h3>-->
             <ul>
