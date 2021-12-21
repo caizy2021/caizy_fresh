@@ -16,7 +16,7 @@
           </li>
           <li v-if="!$store.state.uid"><em>|</em></li>
           <li v-if="!$store.state.uid">
-            <a href="register.html" class="h_register">注册</a>
+            <router-link to="/register" class="h_register">注册</router-link>
           </li>
           <li v-if="$store.state.uid" class="top_user">
             <a href="">{{ $store.state.uname }}</a>
