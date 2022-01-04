@@ -3,11 +3,24 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+// 引入nprogress模块的JS和CSS
+import NProgress from 'nprogress'
+
 // 引入axios模块
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 // 设置默认axios请求路径
 axios.defaults.baseURL="http://www.codeboy.com:9999/mfresh/data/";
+// 在request拦截器中，显示进度条 NProgress.start()
+axios.interceptors.request.use(config=>{
+  NProgress.start()
+  return config
+})
+// 在response拦截器中，隐藏进度条 NProgress.done()
+axios.interceptors.response.use(config=>{
+  NProgress.done()
+  return config
+})
 // 挂载axios
 Vue.use(VueAxios, axios)
 
@@ -18,7 +31,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import 'swiper/swiper-bundle.css'
 
 // import style (<= Swiper 5.x)
-import 'swiper/css/swiper.css'
+// import 'swiper/css/swiper.css'
 
 // 挂载swiper
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
